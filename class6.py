@@ -2,8 +2,8 @@ import cv2
 import os 
 from  PIL import Image 
 
-os. chdir("C:\\Users\\amnah\\OneDrive\\Desktop\\New folder (9)")
-path = "C:\\Users\\amnah\\OneDrive\\Desktop\\New folder (9)"
+os. chdir("C:\\opencvpictures new")
+path = "C:\\opencvpictures new"
 mean_height= 0 
 mean_width = 0 
 
@@ -23,18 +23,18 @@ for i in os.listdir("."):
         img = Image.open (os.path.join(path,i))
         width,height = img.size 
         imgresize = img.resize ((mean_width,mean_height),Image.LANCZOS)
-        imgresize.save(i,"jpg",quality = 95)
+        imgresize.save(i,"png",quality = 95)
 
 
 def createvideo():
-    videoname = "Golden era"
-    os.chdir("C:\\Users\\amnah\\OneDrive\\Desktop\\New folder (9)")
+    videoname = "Golden era.avi"
+    os.chdir("C:\\opencvpictures new")
     images = []
     for i in os.listdir("."):
         if i.endswith(".jpg") or i.endswith(".jpeg") or i.endswith(".png"):
             images.append(i)
 
-    frame = cv2.imread(os.path.join(".",images[[0]]))
+    frame = cv2.imread(os.path.join(".",images[0]))
     height,width,layers = frame.shape 
     video=cv2.VideoWriter(videoname,0,1,(width,height))
     for i in images:
@@ -42,5 +42,5 @@ def createvideo():
     cv2.destroyAllWindows()
     video.release()
 
-
+#couldn't add cr7🥀
 createvideo()
