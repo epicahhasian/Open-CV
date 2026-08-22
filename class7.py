@@ -2,6 +2,8 @@ import cv2
 import numpy as np 
 import time 
 
+print(cv2.__version__)
+
 vid = cv2.VideoCapture("invisible.mp4")
 count = 0 
 background = 0 
@@ -33,7 +35,8 @@ while(vid.isOpened()):
     result2 = cv2.bitwise_and(image,image,mask = mask2)
     finaloutput = cv2.addWeighted(result1,1,result2,1,0)
     cv2.imshow("Invisible Man",finaloutput)
-    cv2.waitKey()
-    cv2.destroyAllWindows
-
+    k = cv2.waitKey()
+    if k ==27:
+        break
+ 
     
